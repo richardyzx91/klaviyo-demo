@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "id": "btc",
+      "name": "Bitcoin",
+      "symbol": "BTC",
+      "support": true,
+      "image": "https://cryptologos.cc/logos/bitcoin-btc-logo.png"
+    },
+    {
+      "id": "eth",
+      "name": "Ethereum",
+      "symbol": "ETH",
+      "support": true,
+      "image": "https://cryptologos.cc/logos/ethereum-eth-logo.png"
+    },
+    {
+      "id": "ltc",
+      "name": "Litecoin",
+      "symbol": "LTC",
+      "support": true,
+      "image": "https://cryptologos.cc/logos/litecoin-ltc-logo.png"
+    },
+    {
+      "id": "doge",
+      "name": "Dogecoin",
+      "symbol": "DOGE",
+      "support": false,
+      "image": "https://cryptologos.cc/logos/dogecoin-doge-logo.png"
+    },
+    {
+      "id": "sol",
+      "name": "Solana",
+      "symbol": "SOL",
+      "support": false,
+      "image": "https://cryptologos.cc/logos/solana-sol-logo.png"
+    }
+  ]
+}
