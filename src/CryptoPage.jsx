@@ -7,7 +7,7 @@ const CryptoPage = () => {
   const crypto = CryptoDatabase.data.find(crypto => crypto.id === cryptoId)
 
   return (
-    <div>
+    <div className="crypto-page">
       <h1>{crypto.name}</h1>
       <img src={crypto.image !== "N/A" ? crypto.image : 'https://via.placeholder.com/100'} alt={crypto.name} width="300px" height="300px"/>
       <h2>{crypto.symbol}</h2>
