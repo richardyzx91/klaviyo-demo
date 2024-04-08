@@ -1,10 +1,38 @@
 import { useParams } from "react-router-dom"
 import CryptoDatabase from "./CryptoDatabase.json"
+import { useEffect } from "react"
 
 const CryptoPage = () => {
   const cryptoId = useParams().cryptoId
   console.log(cryptoId)
   const crypto = CryptoDatabase.data.find(crypto => crypto.id === cryptoId)
+
+  useEffect(() => {
+    klaviyoCreateEvent()
+  }, [])
+
+  const klaviyoCreateEvent = async () => {
+    const requestUrl = "https://richardyan422.npkn.net/klaviyo-create-searched-crypto-event/"
+
+    const requestBody = {
+      email: "sam.marco@klaviyo-demo.com",
+      searched_for: crypto.name,
+    }
+    
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json'
+      },
+      body: requestBody,
+      redirect: "follow"
+    }
+
+    fetch(requestUrl, requestOptions)
+    .then(res => res.text())
+    .then(res => console.log(`Klaviyo API called: ${res}`))
+    .catch(err => console.error(`Error: ${err}`));
+  }
 
   return (
     <div className="crypto-page">

@@ -9,48 +9,8 @@ import CryptoDatabase from './CryptoDatabase.json';
 const App = () => {
   const data = CryptoDatabase.data;
 
-  const klaviyoApiBaseUrl = "https://a.klaviyo.com/api"
-  const klaviyoPk = "pk_cbc2d482a4606854dc0f7b29ef1b959bd3"
-
-  // const klaviyoSession = new ApiKeySession(klaviyoPk)
-  // const eventsAPI = new EventsApi(klaviyoSession)
-  // const profilesApi = new ProfilesApi(klaviyoSession)
-
-  // try {
-  //   const testOutput = profilesApi.getProfiles().then(r => console.log(`Test Output: ${r}`))
-  // } catch (e) {
-  //   console.log('Error: ' + e)
-  // }
-  
-  // const testOutput = eventsAPI.getEvent("57VXXrihXF6").then()
-  // console.log(`Test Output: ${testOutput}`)
-
-
-  // const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
   const [testOutput, setTestOutput] = useState('None')
-
-  useEffect(() => {
-    klaviyoGetProfiles()
-  }, [])
-
-  const klaviyoGetProfiles = async () => {
-    const requestUrl = `${klaviyoApiBaseUrl}/profiles/?page[size]=20`
-    
-    const requestOptions = {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        revision: '2024-02-15',
-        Authorization: `Klaviyo-API-Key ${klaviyoPk}`
-      },
-      redirect: "follow"
-    }
-
-    fetch(requestUrl, requestOptions)
-    .then(res => setTestOutput(res.toString()))
-    .catch(err => console.error('error:' + err));
-  }
 
   return (
     <div className="app">
