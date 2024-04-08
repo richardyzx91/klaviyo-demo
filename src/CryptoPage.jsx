@@ -13,6 +13,7 @@ const CryptoPage = () => {
 
   const klaviyoCreateEvent = async () => {
     const requestUrl = "https://richardyan422.npkn.net/klaviyo-create-searched-crypto-event/"
+    const napkinApiKey = "90d1739dd6b045e98daf4faef739c3e7"
 
     const requestBody = {
       email: "sam.marco@klaviyo-demo.com",
@@ -22,7 +23,8 @@ const CryptoPage = () => {
     const requestOptions = {
       method: 'POST',
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
+        "napkin-account-api-key": napkinApiKey
       },
       body: requestBody,
       redirect: "follow"
