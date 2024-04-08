@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-// import { ApiKeySession, ProfilesApi, EventsApi } from 'klaviyo-api';
 import './App.css';
 import SearchIcon from './search.svg';
 import SearchResults from './SearchResults';
@@ -10,12 +8,32 @@ const App = () => {
   const data = CryptoDatabase.data;
 
   const [searchTerm, setSearchTerm] = useState('')
-  const [testOutput, setTestOutput] = useState('None')
+  const [email, setEmail] = useState('')
+  const [input, setIntput] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setEmail(input)
+  }
 
   return (
     <div className="app">
+      <div className="user">
+        <form onSubmit={handleSubmit}>
+          <input 
+            type="text"
+            placeholder="Set email here..."
+            value={input}
+            onChange={e => setIntput(e.target.value)}
+          />
+        </form>
+
+        <h2>
+          Email: {email ? email : "N/A"}
+        </h2>
+      </div>
+
       <h1>See Supported Cryptos</h1>
-      {testOutput}
 
       <div className="search">
         <input 
@@ -35,7 +53,7 @@ const App = () => {
             <div className="container">
               {
                 data.map((crypto) => crypto.name == searchTerm ? (
-                  <SearchResults key={crypto.symbol} result={crypto} />
+                  <SearchResults key={crypto.symbol} result={crypto} email={email}/>
                 ) : null)
               }
             </div>
@@ -43,13 +61,12 @@ const App = () => {
             <div className="container">
               {
                 data.map((crypto) => (
-                  <SearchResults key={crypto.symbol} result={crypto} />
+                  <SearchResults key={crypto.symbol} result={crypto} email={email}/>
                 ))
               }
             </div>
           )           
       }
-
     </div>
   );
 }

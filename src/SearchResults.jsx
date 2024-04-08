@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const SearchResults = ({result}) => {
+const SearchResults = ({ result, email }) => {
+  const navigate = useNavigate()
 
+  const handleNavigate = () => {
+    navigate(`/${result.id}`, { state: { email } })
+  }
+  
   return (
     <div className="result">
       <div>
@@ -14,11 +19,9 @@ const SearchResults = ({result}) => {
         <img src={result.image !== "N/A" ? result.image : 'https://via.placeholder.com/100'} alt={result.name} />
       </div>
 
-      <div>
-        <Link to={`/${result.id}`}>
+      <div onClick={handleNavigate}>
           <span>{result.symbol}</span>
           <h3>{result.support ? "Supported" : "Not Supported"}</h3>
-        </Link>
       </div>
     </div>
   )

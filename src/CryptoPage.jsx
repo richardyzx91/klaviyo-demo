@@ -1,31 +1,32 @@
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import CryptoDatabase from "./CryptoDatabase.json"
 import { useEffect } from "react"
 
 const CryptoPage = () => {
   const cryptoId = useParams().cryptoId
+  const location = useLocation()
+  const email = location.state?.email
   console.log(cryptoId)
   const crypto = CryptoDatabase.data.find(crypto => crypto.id === cryptoId)
 
   useEffect(() => {
+    console.log(`Sending event: { email: ${email}, searched_for: ${crypto.name}`)
     klaviyoCreateEvent()
   }, [])
 
   const klaviyoCreateEvent = async () => {
     const requestUrl = "https://richardyan422.npkn.net/klaviyo-create-searched-crypto-event/"
-    const napkinApiKey = "90d1739dd6b045e98daf4faef739c3e7"
 
     const requestBody = JSON.stringify({
-      email: "sam.marco@klaviyo-demo.com",
+      email,
       searched_for: crypto.name,
-    });
+    })
     
     const requestOptions = {
       method: 'POST',
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "napkin-account-api-key": napkinApiKey
       },
       body: requestBody,
       redirect: "follow"
