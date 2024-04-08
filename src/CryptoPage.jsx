@@ -27,6 +27,7 @@ const CryptoPage = () => {
         "napkin-account-api-key": napkinApiKey
       },
       body: requestBody,
+      mode: "no-cors",
       redirect: "follow"
     }
 
