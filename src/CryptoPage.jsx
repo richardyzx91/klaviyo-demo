@@ -25,7 +25,6 @@ const CryptoPage = () => {
       headers: {
         Accept: 'application/json',
         "Content-Type": "application/json",
-        "napkin-account-api-key": napkinApiKey
       },
       body: requestBody,
       redirect: "follow"
